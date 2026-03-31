@@ -1,12 +1,14 @@
 package com.demo.trivia.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.validation.constraints.NotNull;
 
 public record AnswerDto(
-        QuestionDto question,
+        @NotNull
+        long questionId,
 
-        @JsonProperty("given_answer")
-        String givenAnswer
+        @NotNull
+        int selectedIndex
 ) {
 
 }

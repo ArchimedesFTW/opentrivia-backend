@@ -1,15 +1,17 @@
 package com.demo.trivia.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.validation.constraints.NotNull;
 
 public record SolutionDto(
+        @NotNull
         QuestionDto question,
 
-        @JsonProperty("given_answer")
-        String givenAnswer,
+        @NotNull
+        int selectedIndex,
 
-        @JsonProperty("correct_answer")
-        String correctAnswer
+        @NotNull
+        int correctIndex
 ) {
 
 }

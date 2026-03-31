@@ -1,8 +1,9 @@
 package com.demo.trivia.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
 
 public record AnswerResponseDto(
+    @NotNull
     SolutionDto[] solutions
 ) {
 }

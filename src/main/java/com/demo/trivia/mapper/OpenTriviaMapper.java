@@ -25,27 +25,28 @@ public final class OpenTriviaMapper {
                 .toList();
     }
 
+    public static QuestionDto toQuestionDto(Question question) {
+        // Merge answers and return them in sorted order
+        // Sort so correct answer is ambiguously placed.
+        // Reverse so that the order of answers is: <True> <False> instead of <False> <True>
+        String[] answers = Stream.concat(
+                        Stream.of(question.getCorrectAnswer()),
+                        Arrays.stream(question.getIncorrectAnswers())
+                )
+                .sorted(String.CASE_INSENSITIVE_ORDER.reversed())
+                .toArray(String[]::new);
+
+        return new QuestionDto(
+                question.getId(),
+                question.getType(),
+                question.getDifficulty(),
+                question.getCategory(),
+                question.getQuestion(),
+                answers);
+    }
+
     public static List<QuestionDto> toQuestionDto(List<Question> questions) {
         return questions.stream()
-                .map(q -> {
-                            // Merge answers and return them in sorted order
-                            // Sort so correct answer is ambiguously placed.
-                            // Reverse so that the order of answers is: <True> <False> instead of <False> <True>
-                            String[] answers = Stream.concat(
-                                            Stream.of(q.getCorrectAnswer()),
-                                            Arrays.stream(q.getIncorrectAnswers())
-                                    )
-                                    .sorted(String.CASE_INSENSITIVE_ORDER.reversed())
-                                    .toArray(String[]::new);
-
-                            return new QuestionDto(
-                                    q.getId(),
-                                    q.getType(),
-                                    q.getDifficulty(),
-                                    q.getCategory(),
-                                    q.getQuestion(),
-                                    answers);
-                        }
-                ).toList();
+                .map(OpenTriviaMapper::toQuestionDto).toList();
     }
 }

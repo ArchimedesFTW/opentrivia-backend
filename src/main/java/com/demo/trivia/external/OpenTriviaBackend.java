@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 
-@Service // TODO not a service?
+@Service // Not really a service, but works for this.
 public class OpenTriviaBackend {
 
     private final String baseURL = "https://opentdb.com/";

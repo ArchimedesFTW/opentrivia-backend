@@ -1,8 +1,9 @@
 package com.demo.trivia.dto;
 
-import com.demo.trivia.dto.QuestionDto;
+import jakarta.validation.constraints.NotNull;
 
 public record QuestionResponseDto(
+        @NotNull
         QuestionDto[] questions
 ) {
 }

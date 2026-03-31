@@ -9,3 +9,5 @@ chmod +x gradlew
 ./gradlew bootJar -x test
 java -jar build/libs/*.jar
 ```
+You can verify that the app is working by going to:
+http://localhost:8080/swagger-ui/

@@ -12,7 +12,8 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000",
-                        "https://archimedesftw.github.io/")
+                        "https://archimedesftw.github.io/",
+                        "https://trivia.dukebas.com/")
                 .allowedMethods("GET", "POST");
     }
 }

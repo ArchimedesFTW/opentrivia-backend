@@ -1,5 +1,5 @@
 # Build/Run Instructions
-To build and host the server on Linux, run:
+To build and host the server on debian(-based) systems, run:
 
 ```
 sudo apt-get update && sudo apt-get install -y git openjdk-21-jdk
@@ -10,7 +10,7 @@ chmod +x gradlew
 java -jar build/libs/*.jar
 ```
 You can verify that the app is working by going to:
-http://localhost:8080/swagger-ui/
+http://localhost:8080/swagger-ui/index.html
 
 ## Code Architecture
 The backend is set up with Java 21, Spring Framework, and Swagger. To keep a clear overview, different types of classes are split into their respective folders. Below, I elaborate on the most relevant folders:
